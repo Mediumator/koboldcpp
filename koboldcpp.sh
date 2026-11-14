@@ -1,5 +1,7 @@
 #!/bin/bash
 ARCH=$(uname -m)
+# nexus : Celeron sans AVX -> librairies (dont CUDA) compilées sans AVX ; NOAVX1 l emporte sur NOAVX2 (Makefile:195, koboldcpp.sh:233)
+export NOAVX1=1
 KCPP_REPO_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)" || exit 1
 KCPP_CONDA_CONFIG_DIR="$KCPP_REPO_DIR/kcpp_src/packaging/environments"
 KCPP_MICROMAMBA="$KCPP_REPO_DIR/bin/micromamba"
